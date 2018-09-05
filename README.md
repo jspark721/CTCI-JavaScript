@@ -6,7 +6,7 @@
 - notes on time & space complexity
 
 ## Interview Questions:
-### [Data Structures]
+### <kbd>Data Structures</kbd>
 #### Chapter 1 | Arrays and Strings
 - [x] 1.1 Is Unique
 - [x] 1.2 Check Permutation
@@ -24,7 +24,7 @@
 
 #### Chapter 4 | Trees and Graphs
 
-### [Concepts and Algorithms]
+### <kbd>Concepts and Algorithms</kbd>
 
 #### Chapter 5 | Bit Manipulation
 
