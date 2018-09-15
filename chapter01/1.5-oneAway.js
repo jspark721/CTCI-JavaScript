@@ -35,9 +35,6 @@ const oneAway = function(str1,str2) {
 }
 
 //test
-console.log(
-  oneAway('cake', 'caked'),
-  oneAway('pale', 'pa'),
-  oneAway('hello','mellow'),
-  oneAway('bake', 'cake')
-)
+console.log(oneAway('cake', 'caked')); //return true
+console.log(oneAway('pale', 'pal')); //return true
+console.log(oneAway('bake', 'pale')); //return false
