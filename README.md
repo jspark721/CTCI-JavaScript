@@ -12,7 +12,11 @@
 - [x] 1.2 Check Permutation
 - [x] 1.3 URLify
 - [x] 1.4 Palindrome Permutation
+<<<<<<< HEAD
 - [ ] 1.5 One Away
+=======
+- [x] 1.5 One Away
+>>>>>>> 17411d307a1fdb3975ea23f353f44f5d4728bd7d
 - [ ] 1.6 String Compression
 - [ ] 1.7 Rotate Matrix
 - [ ] 1.8 Zero Matrix
