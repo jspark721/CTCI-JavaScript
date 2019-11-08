@@ -1,0 +1,72 @@
+SPACE & TIME COMPLEXITY
+
+-----
+
+space complexity - how much memory is used
+time complexity - how many primitive operations are executed?
+
+with respect to input size .. and assuming worst case scenarios
+
+
+/* first problem: given a list of hotels, return the price range of hotels in a given search result
+
+approach 1: compare all numbers to one another
+BRUTE FORCE method
+
+this would be a O(n^2) where n is the number of hotels -- as n grows, the amount of work increases quadratically
+
+# of hotels (n) 3 | 5  | 10  | 100
+# of operations 9 | 15 | 100 | 1000
+
+
+
+
+/* NATIVE METHODS & JS EXPRESSIONS
+
+for loop -- linear O(n)
+pop() -- removes the last element in the array O(1) // constant time operation because you always take the last one
+
+shift & unshift are not contant operations because you have to move the array since you are putting it in front of the array unlike pop and push where they just add it at the end of it
+
+so shift() & unshift() is linear
+
+greater than or less than are constant operations
+
+as my input grows (depending on what the input is) -- how is it going to change?
+
+
+
+
+/* BIG O NOTATION
+
+O(1) constant
+O(log n) logarithmic
+O(n) linear
+O(n log n)
+O(n^2) quadratic
+O(k^n) exponential
+
+complexity of common operations
+O(1) running a statement
+O(1) value look up on an array, object, variable
+O(log n) loop that cuts problem in half every iteration like binary search
+O(n) looping through the values of an array
+O(n^2) double nested loops
+O(n^3) triple nested loops
+
+be mindful of "what is n" -- you're identifying what is the dataset that is growing
+
+
+
+
+/* SPACE COMPLEXITY
+
+instead of number of operations that is executed, how much space are we taking up? how much memory?
+if we're sorting in place, space complexity will be constant since we're not creating a new array and sorting in the current array
+
+
+time complexity of an algorithm signifies the total time required by the program to run to completion. the time complexity of algorithms is most commonly expressed as big O NOTATION
+
+big O notation gives an industry-standard language to discuss the performance of algorithms
+
+What is the worst case scenario of this algorithm?
