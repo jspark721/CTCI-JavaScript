@@ -87,6 +87,44 @@ const memoClosureTimes5 = memoizedClosureTimesM(5);
 
 console.log(memoClosureTimes5(70));
 
+/* Memoization (from interview cake example)
+memoization ensures that a function doesn't run for the same inputs more than once by keeping a record of the results for the given inputs (usually in an object)
+
+for example: a simple recursive function for computing the nth Fibonacci number -- without memoization/caching, the recursive calls for calculating the nth fibonacci number, can take up a lot of space, time and having to constantly run those functions again -- if the function is a tree where the two children of a node are the two recursive calls it makes, we can see that the tree quickly branches out of control
+
+*/
+
+// to avoid duplicate work caused by the branching, we can wrap the function in a class that stores an instance property, memo, that maps inputs to ouputs and save the results of any calculations to memo
+
+class Fibber {
+  constructor() {
+    this.memo = {};
+  }
+
+  fib(n) {
+    //base cases
+    if (n < 0) {
+      throw new Error('Index was negative')
+    } else if (n=== 0 || n === 1) {
+      return n;
+    }
+    // see if the input has already been calculated
+    if (this.memo.hasOwnProperty(n)) {
+      console.log(`grabbing memo[${n}]`);
+      return this.memo[n];
+    }
+
+    console.log(`computing fib(${n})`);
+    const result = this.fib(n - 1) + this.fib(n - 2);
+
+    //memoize
+    this.memo[n] = result;
+    
+    return result;
+  }
+}
+
+console.log(new Fibber().fib(4));
 
 /* GENERIC MEMOIZE FUNCTION */
 
