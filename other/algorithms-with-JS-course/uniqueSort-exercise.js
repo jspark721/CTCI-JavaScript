@@ -27,7 +27,7 @@ console.log(isUnique([1, 2, 3]));
 
 // WE CAN DO BETTER! caching in breadcrumbs, this method we can take a quadratic time algorithm and make it linear -- huge gains in performance
 
-const checkUnique = (arr) => {
+const isUnique2 = (arr) => {
   const breadcrumbs = {};
   let result = true;
 
@@ -44,5 +44,25 @@ const checkUnique = (arr) => {
   return result;
 }
 
+// 
+// console.log(isUnique2([1, 2, 3]));
 
-console.log(checkUnique([1, 2, 3]));
+
+const uniqueSort = (arr) => {
+  const breadcrumbs = {};
+  const newArr = [];
+
+  for(let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    if(!breadcrumbs[num]) {
+      console.log(breadcrumbs);
+      newArr.push(num);
+      breadcrumbs[num] = true;
+    }
+  }
+  return newArr.sort((a, b) => a - b);
+}
+
+let array = [21,4, 3, 2, 2, 1, 21, 3];
+
+console.log(uniqueSort(array));
