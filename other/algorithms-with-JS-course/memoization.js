@@ -120,7 +120,29 @@ const memoizedPlus5 = memoize(plus5);
 
 console.log(memoizedPlus5(21));
 
+// you can make it even MORE generalized because the previous example function only allows you to use a function that only allows to pass ONE argument
+// how might you make it more generalized so the callback function can have multiple arguments?
+// by USING A SPREAD AND REST OPERATOR
 
+const memoize2 = (callback) => {
+  let cache = {};
+  return (n, ...args) => {
+    if (n in cache) {
+      console.log('general memoize function -- fetching from cache:', n);
+      return cache[n];
+    } else {
+      console.log('gmf -- calculating result >>');
+      let result = callback(n,...args);
+      cache[n] = result;
+      return result;
+    }
+  }
+}
+
+const multiplyNums = (a, b, c) => a * b * c;
+
+const memoizedMultiply = memoize2(multiplyNums);
+console.log('multiple argument memoized function answer:', memoizedMultiply(3, 5, 10));
 /* Memoization (from interview cake example)
 memoization ensures that a function doesn't run for the same inputs more than once by keeping a record of the results for the given inputs (usually in an object)
 
