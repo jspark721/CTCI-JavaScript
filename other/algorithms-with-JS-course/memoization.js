@@ -87,6 +87,40 @@ const memoClosureTimes5 = memoizedClosureTimesM(5);
 
 console.log(memoClosureTimes5(70));
 
+
+/* GENERIC MEMOIZE FUNCTION */
+
+//task 4: make your memo function generic and accept the times10 function as a callback rather than defining the n * 10 logic inside the if/else or pulling it in from the global scope
+
+// tip: take advantage of the fact that parameters are saved in the colsure as well, just like the cache from the previous example
+
+const memoize = (callback) => {
+  let cache = {};
+  return (n) => {
+    if (n in cache) {
+      console.log('general memoize function -- fetching from cache:', n);
+      return cache[n];
+    } else {
+      console.log('gmf -- calculating result >>');
+      let result = callback(n);
+      cache[n] = result;
+      return result;
+    }
+  }
+}
+const memoizedTimes10 = memoize(times10);
+console.log(memoizedTimes10(10));
+console.log(memoizedTimes10(5));
+
+// so when you create a function with a callback, you can put any other function as a cb function and use memoize with it
+
+const plus5 = (num) => num + 5;
+
+const memoizedPlus5 = memoize(plus5);
+
+console.log(memoizedPlus5(21));
+
+
 /* Memoization (from interview cake example)
 memoization ensures that a function doesn't run for the same inputs more than once by keeping a record of the results for the given inputs (usually in an object)
 
@@ -119,20 +153,9 @@ class Fibber {
 
     //memoize
     this.memo[n] = result;
-    
+
     return result;
   }
 }
 
 console.log(new Fibber().fib(4));
-
-/* GENERIC MEMOIZE FUNCTION */
-
-//task 4: make your memo function generic and accept the times10 function as a callback rather than defining the n * 10 logic inside the if/else or pulling it in from the global scope
-
-// tip: take advantage of the fact that parameters are saved in the colsure as well, just like the cache from the previous example
-
-const memoize = (callback) => {
-
-}
-const memoizedTimes10 = memoize(times10);
