@@ -49,6 +49,20 @@ var callMe = function(arg) {
 
 console.log(callMe());
 
+
+/*looping with recursion
+
+1. identify base case(s) // if we don't reach the base case -- it will cause the recursion function to have an infinite loop and crash
+2. identify recursive case(s)
+3. return where appropriate
+4. write procedures for each case that bring you closer to the base case(s)
+
+
+recusion can always be implemented as a loop, but in some situations, believe it or not, it is simpler to use RECURSION
+
+*/
+
+
 /* factorial example */
 
 function factorial(x) {
@@ -117,7 +131,7 @@ return reverseString('') + 't';
 and this time, our base case runs and the function returns a blank string
 if (str === '') return '';
 
-now that our function has returned, everything will 'unwind' and return in order 
+now that our function has returned, everything will 'unwind' and return in order
 
 return '' + 't' + 'a' + 'c' // tac
 
