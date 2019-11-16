@@ -62,6 +62,68 @@ recusion can always be implemented as a loop, but in some situations, believe it
 
 */
 
+/* COMMON PATTERNS FOR RECURSION
+
+   - wrapper functions
+   - accumulators
+
+*/
+
+//wrapper function
+function wrapperFnLoop(start, end) {
+  function recurse(i) {
+    console.log(`looping from ${start} until ${end}`);
+    if(i < end) { //accessing the end variable is accessing a closure scoped variable
+      recurse(i + 1);
+    }
+  }
+  recurse(start); // this is closure
+}
+
+function MemoFnLoop(i, end) {
+  console.log(`looping from ${i} until ${end}`);
+  if( i < end) {
+    MemoFnLoop(i + 1, end);
+  }
+}
+
+console.log('~~~wrapperFnLoop~~~~');
+wrapperFnLoop(1,5);
+console.log('~~~MemoFnLoop~~~~');
+MemoFnLoop(1, 7);
+
+
+//accumulator technique -- which gathers all callbacks returned values
+
+function joinElements(array, joinString) {
+  function recurse(index, resultSoFar) {
+    resultSoFar += array[index];
+
+    if(index === array.length - 1) { //here, we are just looping through the array until theres nothing left in the array
+      return resultSoFar;
+    } else {
+      return recurse(index + 1, resultSoFar + joinString);
+    }
+  }
+
+  return recurse(0, '');
+}
+
+console.log('joinElements recursive function answer: ', joinElements(['s', 'cr', 't'], 'e'));
+
+
+//rewrite the joinElements function so it uses a loop rather than recursion -- the iterative approach
+
+function joinElementsIteratively(array, joinString) {
+  let currentResult = '';
+
+  for(let i = 0; i < array.length - 1; i++) {
+    currentResult += array[i] + joinString;
+    console.log(currentResult);
+  }
+  return currentResult + array[array.length - 1];
+}
+console.log('joinElements iterative function answer: ', joinElementsIteratively(['s', 'cr', 't'], 'e'));
 
 /* factorial example */
 
@@ -76,6 +138,8 @@ function factorial(x) {
 }
 
 console.log(factorial(3));
+
+
 
 /* the factorial function flow
 1. we first call our function passing in the value of 3

@@ -112,6 +112,20 @@ const memoizedTimes10 = memoize(times10);
 console.log(memoizedTimes10(10));
 console.log(memoizedTimes10(5));
 
+//factorial memoize function
+
+const factorial = memoize(
+  (x) => {
+    if(x === 0) {
+      return 1;
+    } else {
+      return x * factorial(x - 1);
+    }
+  }
+);
+console.log('~~~~ FACTORIAL ~~~', factorial(5)); // calculated
+console.log('~~~~ FACTORIAL ~~~', factorial(7)); // memoized
+
 // so when you create a function with a callback, you can put any other function as a cb function and use memoize with it
 
 const plus5 = (num) => num + 5;
