@@ -11,5 +11,21 @@ because nums[0] + nums[1] = 2 + 7 = 9, return [0,1]
 
 //brute force
 const twoSums = (array, target) => {
-  
+  let result = [];
+  for(let i = 0; i < array.length; i++) {
+    for(let j = i + 1; j < array.length; j++) {
+      if(array[i] + array[j] === target) {
+        result.push(i);
+        result.push(j);
+      }
+    }
+  }
+  return result;
 }
+
+let array = [2, 7, 11, 15];
+let target = 9;
+console.log(twoSums(array, target));
+
+// this solution checks all combinations by looping each element x and find if there is another value that equals to 'target - x '
+// time complexity of O(n^2)
