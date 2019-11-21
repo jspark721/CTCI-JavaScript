@@ -91,7 +91,7 @@ myList.removeTail();
 */
 
 console.log(myList);
-console.log(myList.contains(2));
+console.log(myList.contains(2)); //true
 
 
 /* key/critical concepts about linked list
