@@ -70,6 +70,7 @@ class HashTable2 {
   constructor(val) {
     this._storage = [];
     this._tableSize = val;
+    this._inputSize = 0; // increase it when you add/insert
   }
 
   //inserts a new key-value pair
@@ -81,16 +82,16 @@ class HashTable2 {
       // [0, 0, 0, []] // this is handling a collision
     }
     this._storage[index].push([key,value]);
-    // adding the key value pairs 
+    // adding the key value pairs
     // [0, 0, 0, [['a', 1], ['b', 2]]]
   }
 
   //deletes a key-value pair
   remove() {
-
+    
   }
 
-  //returns the value associated with a key 
+  //returns the value associated with a key
   retrieve(key) {
     const index = this._hash(key, this._tableSize);
     const arrayAtIndex = this._storage[index];
