@@ -111,33 +111,34 @@ function hoursAttended(attended, length) {
 
 
 //TODO: ...findAll(value) function
-
-function findAll(match, arr) {
-    var newArr = [];
+function findAll(match,arr) {
+    var ret = [];
     for (let v of arr) {
-        if(Object.is(match,v)) {
-            newArr.push(v);
+      if (Object.is(match,v)) {
+        ret.push(v);
+      }
+      else if (match == null && v == null) {
+        ret.push(v);
+      }
+      else if (typeof match == "boolean") {
+        if (match === v) {
+          ret.push(v);
         }
-        else if (match == null && v == null) {
-            newArr.push(v);
+      }
+      else if (typeof match == "string" && match.trim() != "" && typeof v == "number" && !Object.is(-0,v)) {
+        if (match == v) {
+          ret.push(v);
         }
-        else if (typeof match == "boolean" && typeof v == "boolean") {
-            if(match == v) { // we don't need a triple equals here because we are already checking above if they are a boolean
-                newArr.push(v);
-            }
-        } 
-        else if (typeof match == "string" && match.trim() != "" && typeof v == "number" && !Object.is(v, -0)) { //remove all the corner cases
-            if(match == v) {
-                newArr.push(v);
-            }
+      }
+      else if (typeof match == "number" && !Object.is(match,-0) && !Object.is(match,NaN) && !Object.is(match,Infinity) && !Object.is(match,-Infinity) && typeof v == "string" && v.trim() != "") {
+        if (match == v) {
+          ret.push(v);
         }
-        else if (typeof match == "number" && !Object.is(match,-0) && !Object.is(match,NaN) && !Object.is(match,Infinity) && !Object.is(match,-Infinity) && typeof v == "string" && v.trim() != "") {
-            newArr.push(v);
-        }
+      }
     }
-    return newArr; 
-}
-
+      return ret;
+  }
+  
 var myObj = { a: 2 };
 
 var values = [
