@@ -15,8 +15,7 @@ const twoSums = (array, target) => {
   for(let i = 0; i < array.length; i++) {
     for(let j = i + 1; j < array.length; j++) {
       if(array[i] + array[j] === target) {
-        result.push(i);
-        result.push(j);
+        result.push(i, j);
       }
     }
   }
@@ -29,3 +28,22 @@ console.log(twoSums(array, target));
 
 // this solution checks all combinations by looping each element x and find if there is another value that equals to 'target - x '
 // time complexity of O(n^2)
+// space complexity of O(1)
+
+//hash table version to improve time complexity
+
+const twoSums2 = function(nums, target) {
+  let hash= {};
+  let result = [];
+
+  for(let i = 0; i < nums.length; i++) {
+    let num = nums[i];
+    if(hash[target-num] !== undefined) {
+      result = [hash[target-num], i];
+    }
+    hash[num] = i;
+  }
+  return result;
+}
+
+console.log(twoSums2(array, target));
