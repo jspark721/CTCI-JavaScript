@@ -2,6 +2,8 @@
 
 // how do we get from the bottom child node to the parent node? just walk/loop back up the tree until you find the parent
 
+// reverse path algorithm
+
 function reversePath(element, root) {
     const path = [];
     let pointer = element;
@@ -15,6 +17,7 @@ function reversePath(element, root) {
 
     pointer = root;
 
+    // second tree -- iterate down the tree, move the pointer to the next child
     while(path.length) {
         pointer = children[path.pop()];
     }
