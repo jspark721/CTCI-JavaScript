@@ -18,7 +18,7 @@ class BinarySearchTree {
     return this.count;
   }
 
-  insert() {
+  insert(value) {
     this.count++;
 
     let newNode = new Node(value);
@@ -48,6 +48,43 @@ class BinarySearchTree {
     }
 
     searchTree(this.root); //this will traverse down the tree from the root
+  }
+
+  delete(value) {
+    const deleteNode = (node, value) => {
+      if(node == null) {
+        return null
+      }
+      if(value == node.value) {
+        //node has no children
+        if(node.left == null && node.right == null) {
+          return null;
+        }
+        //node has no left child
+        if(node.left == null) {
+          return node.right;
+        }
+        if(node.right == null) {
+          return node.left;
+        }
+
+        //node has two children
+        let tempNode = node.right;
+        while(tempNode.left !== null) {
+          tempNode = tempNode.left;
+        }
+        node.value = tempNode.value;
+        node.right = deleteNode(node.right, tempNode.value);
+        return node;
+      } else if (value < node.value) {
+        node.left = deleteNode(node.left, value);
+        return node;
+      } else {
+        node.right = deleteNode(node.right, value);
+        return node;
+      }
+    }
+    this.root = deleteNode(this.root,value);
   }
 
   min() {
@@ -115,6 +152,7 @@ class BinarySearchTree {
 
     const traverse = node => {
       result.push(node.value);
+      console.log(result)
       if(node.left) {
         traverse(node.left);
       }
@@ -128,14 +166,20 @@ class BinarySearchTree {
 
   // postorder --> left, right, root
   dfsPostOrder() {
-    if(node.left) {
-      traverse(node.left);
+    let result = [];
+
+    const traverse = node => {
+      if(node.left) {
+        traverse(node.left);
+      }
+      if(node.right) {
+        traverse(node.right);
+      }
+      result.push(node.value);
     }
-    if(node.right) {
-      traverse(node.right);
-    }
+
     traverse(this.root);
-    result.push(node.value);
+    return result;
   }
 
   //breadth first search -- level by level
@@ -150,7 +194,7 @@ class BinarySearchTree {
       // take the first item out of the queue
       let currentNode = queue.shift();
       //push the first item in the queue into the array
-      result.push(currentNode);
+      result.push(currentNode.value);
 
       if(currentNode.left) {
         queue.push(currentNode.left);
@@ -184,7 +228,14 @@ console.log(bst.contains(21)); // false
 
 
 //DFS!
+console.log("inorder---- ")
+console.log(bst.dfsInOrder()); // 2, 3, 12, 15, 28, 36, 39
+console.log("preorder---- ");
+console.log(bst.dfsPreOrder()); // 15, 3, 2, 12, 36, 28, 39
+console.log("postorder---- ")
+console.log(bst.dfsPostOrder()); // 2, 12, 3, 28, 39, 36, 15
 
-bst.dfsInOrder(); // 2, 3, 12, 15, 28, 36, 39
-bst.dfsPreOrder(); // 15, 3, 2, 12, 36, 28, 39
-bst.dfsPostOrder(); // 2, 12, 3, 28, 39, 36, 15
+bst.delete(12);
+bst.contains(12);
+bst.dfsInOrder();
+bst.bfs();
