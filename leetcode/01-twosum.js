@@ -38,10 +38,11 @@ const twoSums2 = function(nums, target) {
 
   for(let i = 0; i < nums.length; i++) {
     let num = nums[i];
-    if(hash[target-num] !== undefined) {
+    hash[num] = i;
+
+    if(hash[target-num] !== undefined && hash[target-num] !== i) {
       result = [hash[target-num], i];
     }
-    hash[num] = i;
   }
   return result;
 }
