@@ -1,4 +1,4 @@
-//Binary Search Tree
+//Binary Search
 
 class Node {
   constructor(value) {
@@ -8,9 +8,9 @@ class Node {
   }
 }
 
-class BinarySearchTree {
+class BinarySearch {
   constructor(value) {
-    this.root = new Node(value); // initialize the root of the tree with the value
+    this.root = new Node(value); // initialize the root of the  with the value
     this.count = 1; // root counts as one value
   }
 
@@ -24,53 +24,52 @@ class BinarySearchTree {
     let newNode = new Node(value);
     //check if it's greater or less than the root node and every node so implement a recursive search
 
-    const searchTree = node => {
+    const search = (node) => {
       //if value < node.value, go left
-      if(value < node.value) {
+      if (value < node.value) {
         //if no left child, append new node
-        if(!node.left) {
+        if (!node.left) {
           node.left = newNode;
         }
         //if left child, look left again until there is no left node then place it there
         else {
-          searchTree(node.left);
+          search(node.left);
         }
       }
       //if value > node.value, go right
-      else if(value > node.value) {
-        if(!node.right) {
+      else if (value > node.value) {
+        if (!node.right) {
           node.right = newNode;
-        }
-        else {
-          searchTree(node.right);
+        } else {
+          search(node.right);
         }
       }
-    }
+    };
 
-    searchTree(this.root); //this will traverse down the tree from the root
+    search(this.root); //this will traverse down the  from the root
   }
 
   delete(value) {
     const deleteNode = (node, value) => {
-      if(node == null) {
-        return null
+      if (node == null) {
+        return null;
       }
-      if(value == node.value) {
+      if (value == node.value) {
         //node has no children
-        if(node.left == null && node.right == null) {
+        if (node.left == null && node.right == null) {
           return null;
         }
         //node has no left child
-        if(node.left == null) {
+        if (node.left == null) {
           return node.right;
         }
-        if(node.right == null) {
+        if (node.right == null) {
           return node.left;
         }
 
         //node has two children
         let tempNode = node.right;
-        while(tempNode.left !== null) {
+        while (tempNode.left !== null) {
           tempNode = tempNode.left;
         }
         node.value = tempNode.value;
@@ -83,15 +82,15 @@ class BinarySearchTree {
         node.right = deleteNode(node.right, value);
         return node;
       }
-    }
-    this.root = deleteNode(this.root,value);
+    };
+    this.root = deleteNode(this.root, value);
   }
 
   min() {
     let currentNode = this.root;
 
     // while there exists a left child node, keep looking left -- continue traversing left until no more children
-    while(currentNode.left) {
+    while (currentNode.left) {
       currentNode = currentNode.left;
     }
     return currentNode.value;
@@ -100,27 +99,27 @@ class BinarySearchTree {
   max() {
     let currentNode = this.root;
 
-    while(currentNode.right) {
+    while (currentNode.right) {
       currentNode = currentNode.right;
     }
     return currentNode.value;
   }
 
-  //checks if a value exists in the tree
+  //checks if a value exists in the
   contains(value) {
     let currentNode = this.root;
 
-    while(currentNode) {
-      if(value === currentNode.value) {
+    while (currentNode) {
+      if (value === currentNode.value) {
         return true;
       }
-      if(value < currentNode.value) {
+      if (value < currentNode.value) {
         currentNode = currentNode.left;
       } else {
         currentNode = currentNode.right;
       }
     }
-    //if you don't find the value after traversing through the whole tree, return false
+    //if you don't find the value after traversing through the whole , return false
     return false;
   }
 
@@ -130,18 +129,18 @@ class BinarySearchTree {
   dfsInOrder() {
     let result = [];
 
-    const traverse = node => {
+    const traverse = (node) => {
       //if left child exists, go left again
-      if(node.left) {
+      if (node.left) {
         traverse(node.left);
       }
       //capture root node value
       result.push(node.value);
       //if right child exists, go right again
-      if(node.right) {
+      if (node.right) {
         traverse(node.right);
       }
-    }
+    };
     traverse(this.root);
     return result;
   }
@@ -150,16 +149,16 @@ class BinarySearchTree {
   dfsPreOrder() {
     let result = [];
 
-    const traverse = node => {
+    const traverse = (node) => {
       result.push(node.value);
-      console.log(result)
-      if(node.left) {
+      console.log(result);
+      if (node.left) {
         traverse(node.left);
       }
-      if(node.right) {
+      if (node.right) {
         traverse(node.right);
       }
-    }
+    };
     traverse(this.root);
     return result;
   }
@@ -168,15 +167,15 @@ class BinarySearchTree {
   dfsPostOrder() {
     let result = [];
 
-    const traverse = node => {
-      if(node.left) {
+    const traverse = (node) => {
+      if (node.left) {
         traverse(node.left);
       }
-      if(node.right) {
+      if (node.right) {
         traverse(node.right);
       }
       result.push(node.value);
-    }
+    };
 
     traverse(this.root);
     return result;
@@ -190,16 +189,16 @@ class BinarySearchTree {
     queue.push(this.root);
 
     //while the queue has values in it
-    while(queue.length) {
+    while (queue.length) {
       // take the first item out of the queue
       let currentNode = queue.shift();
       //push the first item in the queue into the array
       result.push(currentNode.value);
 
-      if(currentNode.left) {
+      if (currentNode.left) {
         queue.push(currentNode.left);
       }
-      if(currentNode.right) {
+      if (currentNode.right) {
         queue.push(currentNode.right);
       }
     }
@@ -208,10 +207,9 @@ class BinarySearchTree {
   }
 }
 
+//test the Binary Search
 
-//test the Binary Search Tree
-
-const bst = new BinarySearchTree(15); //root will be 15
+const bst = new BinarySearch(15); //root will be 15
 
 bst.insert(3);
 bst.insert(36);
@@ -226,13 +224,12 @@ console.log(bst.max()); // 39
 console.log(bst.contains(12)); // true
 console.log(bst.contains(21)); // false
 
-
 //DFS!
-console.log("inorder---- ")
+console.log('inorder---- ');
 console.log(bst.dfsInOrder()); // 2, 3, 12, 15, 28, 36, 39
-console.log("preorder---- ");
+console.log('preorder---- ');
 console.log(bst.dfsPreOrder()); // 15, 3, 2, 12, 36, 28, 39
-console.log("postorder---- ")
+console.log('postorder---- ');
 console.log(bst.dfsPostOrder()); // 2, 12, 3, 28, 39, 36, 15
 
 bst.delete(12);
