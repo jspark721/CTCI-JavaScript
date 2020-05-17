@@ -112,6 +112,38 @@ class LinkedList {
     }
     return currentNode;
   }
+  removeAt(index) {
+    let prevNode = this.get(index - 1);
+    let currentNode = this.get(index);
+
+    if (index < 0 || index > this.length) {
+      return null;
+    }
+
+    if (index === 0) {
+      head = currentNode.next;
+    } else {
+      prevNode.next = currentNode.next;
+    }
+    this.length--;
+    return currentNode.value;
+  }
+  addAt(index, value) {
+    let node = new Node(value);
+    let headNode = this.head;
+    let prevNode = this.get(index - 1);
+    let indexNode = this.get(index);
+
+    if (index === 0) {
+      //add to the head node
+      node.next = headNode;
+      this.head = node;
+    } else {
+      prevNode.next = node;
+      node.next = indexNode;
+    }
+    this.length++;
+  }
 
   size() {
     return this.length;
@@ -123,9 +155,8 @@ myList.push('puppy');
 myList.push('harvey');
 myList.push('shihtzu');
 myList.push('good doggo');
-console.log(myList.size());
-console.log(myList.pop());
-console.log(myList.size());
-console.log(myList.get(2));
-myList.pop();
+console.log(myList.removeAt(2)); // 'shihtzu'
 console.log(myList);
+console.log(myList.get(2));
+myList.addAt(2, 'newItem');
+console.log(myList.get(2));
