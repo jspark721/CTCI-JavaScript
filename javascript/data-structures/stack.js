@@ -1,4 +1,14 @@
 // Last in First Out (LIFO)
+
+// stack of books, stack of plates, you get the top item first before you can get to the middle, or bottom
+
+/* benefits of stacks: allows constant time adding and removing since we won't have to shift any items around to pop off or add to the top item in the stack
+
+downsides: don't offer constant time access to nth item unlike an array, so if we want to access the third book, we have to pop off each item until we reach the 3rd book. if we want to access the first item in the stack (the bottom element), we have to iterate through each book and remove it 
+has O(n) time complexity
+
+*/
+
 class Stack {
   constructor() {
     this.stack = [];

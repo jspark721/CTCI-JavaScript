@@ -1,5 +1,12 @@
 // First in First Out(FIFO)
 
+//people waiting in line, the person who has been waiting in line the longest is the first person to be serviced
+
+/*
+Use cases: queues are similar to linked list and are typically used for breadth-first searches, and queues can be used to implement cache 
+
+primary methods of queue: enqueue (add item to the back of the list) and dequeue(remove first item from the list)
+*/
 class Queue {
   constructor() {
     this.queue = [];
