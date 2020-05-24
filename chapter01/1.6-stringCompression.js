@@ -4,13 +4,15 @@
 
 //input: string
 //output: string
+//constraints: optimize
+//edge cases: empty string, compressed string that's same length as the original string
 
-const compress = function(str) {
+const compress = function (str) {
   let compressedStr = '';
   let charCount = 1;
 
-  for(let i = 0; i < str.length; i++) {
-    if(str[i] === str[i+1]) {
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i + 1]) {
       charCount++;
     } else {
       compressedStr += str[i] + charCount;
@@ -21,7 +23,7 @@ const compress = function(str) {
     return str;
   }
   return compressedStr;
-}
+};
 
 //test
 console.log(compress('aaAAaa'));
