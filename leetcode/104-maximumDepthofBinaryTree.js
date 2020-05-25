@@ -37,3 +37,25 @@ var maxDepth = function (root) {
 };
 
 //time complexity: O(n) -- traversing the entire tree;
+
+//using BFS with queue
+const maxDepthBFS = function (root) {
+  if (!root) return 0;
+
+  const queue = [root];
+  let depth = 0;
+  while (queue.length) {
+    let size = queue.length;
+    for (let i = 0; i < size; i++) {
+      let currentNode = queue.shift();
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+    depth++;
+  }
+  return depth;
+};

@@ -41,3 +41,35 @@ var maxDepthRecursion = function (root) {
   }
   return depth + 1;
 };
+
+//dfs using recursion with map
+var maxDepthMap = function (root) {
+  if (!root) {
+    return 0;
+  }
+
+  if (root.children.length === 0) {
+    return 1;
+  }
+
+  let depthOfChildren = root.children.map(maxDepth);
+
+  return Math.max(...depthOfChildren) + 1;
+};
+
+//dfs using recursion with for loop
+var maxDepthForLoop = function (root) {
+  return dfs(root);
+};
+
+function dfs(node) {
+  if (node == null) return 0;
+  let maxDepth = 0;
+
+  for (let i = 0; i < node.children.length; i++) {
+    const depth = dfs(node.children[i]);
+    maxDepth = Math.max(maxDepth, depth);
+  }
+
+  return maxDepth + 1;
+}
