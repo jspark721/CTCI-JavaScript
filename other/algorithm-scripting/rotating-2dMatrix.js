@@ -3,8 +3,7 @@
  * @return {Array<Array<number>>}
  */
 const rotate = (matrix) => {
-  const rotated = [];
-  if (matrix.length === 0) return rotated;
+  if (matrix.length === 0) return [];
 
   for (let row = 0; row < matrix.length; row++) {
     for (let col = row; col < matrix.length; col++) {
