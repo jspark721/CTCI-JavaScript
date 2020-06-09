@@ -49,12 +49,10 @@ const setZeroes = (matrix) => {
   let col0 = 1;
 
   for (let i = 0; i < row; i++) {
-    console.log(`matrix row ---- ${matrix}`);
     if (matrix[i][0] === 0) {
       col0 = 0;
     }
     for (let j = 1; j < col; j++) {
-      console.log(`matrix col ---- ${matrix}`);
       if (matrix[i][j] === 0) {
         matrix[i][0] = 0;
         matrix[0][j] = 0;
