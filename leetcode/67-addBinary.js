@@ -25,8 +25,8 @@ const addBinary = (s1, s2) => {
     j--;
 
     console.log(s);
-    s += sum % 2;
-    carry = Math.floor(sum / 2);
+    s += sum % 2; // sum will either be 0, 1 or 2, if sum is 0 or 2, sum mod 2 will equal 0
+    carry = Math.floor(sum / 2); // if sum ends up being 2, then carry will be 1 to get carried over
   }
   if (carry) {
     s += carry;
