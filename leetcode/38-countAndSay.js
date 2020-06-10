@@ -47,27 +47,48 @@ Explanation: For n = 3 the term was "21" in which we have two groups "2" and "1"
 //   return result;
 // };
 
-const countAndSay = function (n) {
-  let str = '1';
+// const countAndSay = function (n) {
+//   let str = '1';
 
-  for (let i = 1; i < n; i++) {
-    let strArr = str.split('');
-    str = '';
-    let count = 1;
+//   for (let i = 1; i < n; i++) {
+//     let strArr = str.split('');
+//     str = '';
+//     let count = 1;
 
-    //loop through the current nth level line
-    for (let j = 0; j < strArr.length; j++) {
-      //if next digit is different
-      if (strArr[j] !== strArr[j + 1]) {
-        // go to the next non-matching digit
-        str += count + strArr[j];
-        console.log(str);
-        count = 1;
+//     //loop through the current nth level line
+//     for (let j = 0; j < strArr.length; j++) {
+//       //if next digit is different
+//       if (strArr[j] !== strArr[j + 1]) {
+//         // go to the next non-matching digit
+//         str += count + strArr[j];
+//         console.log(str);
+//         count = 1;
+//       } else {
+//         count++;
+//       }
+//     }
+//   }
+//   return str;
+// };
+
+var countAndSay = function (n) {
+  let start = '1';
+  let result = '';
+  let tmp = 1;
+
+  for (let i = 0; i < n - 1; i++) {
+    //tmp will count all repeats
+    for (let j = 0; j < start.length; j++) {
+      if (start[j] != start[j + 1] || j == start.length - 1) {
+        result += tmp + start[j];
+        tmp = 1;
       } else {
-        count++;
+        tmp += 1;
       }
     }
+    start = result;
+    result = '';
   }
-  return str;
+  return start;
 };
 console.log(countAndSay(8)); //1113213211

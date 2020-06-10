@@ -38,7 +38,7 @@ function LinkedList() {
 
   this.remove = function (element) {
     var currentNode = head;
-    var perviousNode;
+    var previousNode;
     if (currentNode.element === element) {
       // the head node is the element that we are trying to remove
       head = currentNode.next;
