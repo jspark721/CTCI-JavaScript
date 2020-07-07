@@ -16,45 +16,68 @@ var maxSubArray = function (nums) {
   }
   return maxSum;
 };
-
 /*
 
-You are given a list of n-1 integers and these integers are in the range of 1 to n. There are no duplicates in list. 
-One of the integers is missing in the list. Write an efficient code to find the missing integer.
+Write an efficient program to find the sum of contiguous subarray within a one-dimensional array of numbers which has the largest sum.
 
-input: array
-output: number
+can it have duplicates?
+can it have negative numbers?, assuming there are negative numbers because if not, the answer would be just the sum of all the numbers to get the largest sum
 
-examples --- 
-input: [5,4,2,1]
-output: 3
+are we returning the subarray? or the largest sum?
+I will assume that we will return the largest sum
 
-questions: is the array sorted? it doesn't explicitly say it's sorted, so we're going to assume it's not sorted
-only distinct numbers, no duplicates
-array integer values are from range 1 to n
-1 < arr[i] < n
+example: 
+input: array [1,-1, 5, 3, 3, -5, 10, 2]
+output: 18 because 5 + 3 + 3 + -5 + 10 + 2 = 18 the largest sum of the array
 
-edge cases: empty array
-constraints: optimize -- get faster time complexity
+example:
+input: [2, -4, 5, 3, -5]
+output: 8
+
+index 0
+sum = max of (2, or (2 + 0 = 2)) = 2
+maxSum = max of (2, or 2) because maxSum starts at the value of arr[0] and we compare it to get the max of the sum or maxSum
+
+index 1
+sum = max of (-4 or (-4 + 2) = -2)) = -2
+maxSum = max of (2, 2) = 2
+
+index 2
+sum = max of (5 or (-2 + 5) = 3) = 5
+maxSum = max of (2, 5) = 5
+
+index 3
+sum = max of (3 or (5 + 3) = 8) = 8
+maxSum = max of (5, 8) = 8
+
+index 4
+sum = max of (-5 or (8 + -5) = 3) = 3
+maxSum = max of (8,3) = 8
+
+so return 8!
+
 
 */
 
-const findMissingInteger = (arr) => {
-  //edge case
+const largestSumOfSubArray = (arr) => {
+  //edge cases
   if (arr.length === 0) return -1;
+  if (arr.length === 1) return arr[0];
 
-  let n = arr.length;
-  let sum = (n * (n + 1)) / 2; // sum of all numbers from 0 to n by series computation formula
-  let actualSum = 0;
+  let sum = 0;
+  let maxSum = arr[0];
 
-  for (let i = 0; i < n; i++) {
-    actualSum += arr[i];
+  for (let i = 0; i < arr.length; i++) {
+    //if value at arr[i] is less than sum + arr[i], make the max number become the value of the sum
+    sum = Math.max(arr[i], sum + arr[i]);
+    console.log(`sum ${sum}, maxSum ${maxSum}`);
+
+    //get the max between sum or current maxSum
+    maxSum = Math.max(sum, maxSum);
   }
-  return sum - actualSum;
+
+  return maxSum;
 };
 
-console.log(findMissingInteger([3, 5, 2, 4])); // return 1;
-console.log(findMissingInteger([1, 6, 8, 3, 5, 2, 4])); // return 7;
-
-// time complexity: O(n)
-// space complexity: O(n) space because the space increases with input size of the array
+console.log(largestSumOfSubArray([1, -1, 5, 3, 3, -5, 10, 2])); //return 18 (5+3+3+-5+10+2)
+console.log(largestSumOfSubArray([2, -4, 5, 3, -5])); // return 8;
