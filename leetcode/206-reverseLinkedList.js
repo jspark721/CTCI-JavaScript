@@ -25,3 +25,16 @@ var reverseList = function (head) {
   }
   return prev;
 };
+
+//recursion
+
+const reverseRecursion = (head) => {
+  if (head == null || head.next == null) {
+    return head;
+  }
+  let prev = reverseRecursion(head.next);
+  prev.next = head;
+  head.next = null;
+
+  return prev;
+};
