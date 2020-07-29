@@ -25,3 +25,6 @@ var mergeTwoLists = function (l1, l2) {
   }
   return node;
 };
+
+//time complexity: O(n*m) -- n is l1 and m is l2
+//space complexity: O(n*m)
