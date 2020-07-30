@@ -20,6 +20,7 @@ var climbStairs = function (n) {
   dp[2] = 2;
 
   for (let i = 3; i <= n; i++) {
+    // the answer to the ith subproblem is the sum between the i-1 stairs and i-2 stairs
     dp[i] = dp[i - 1] + dp[i - 2];
   }
   return dp[n];
