@@ -19,3 +19,6 @@ const isSubstring = (str1, str2) => {
 console.log(isSubstring("waterbottle", "erbottlewat")); //true
 console.log(isSubstring("harvey", "arveyh")); // true
 console.log(isSubstring("helloworld", "wrldhelloo")); //false
+
+//Time complexity: O(n) -- going through the new string once to see if str1 is included
+//Space complexity: O(n) -- creating a new string (str2 + str2)
