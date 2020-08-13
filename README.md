@@ -1,13 +1,13 @@
-## Cracking the Coding Interview - 6th Edition
+# Cracking the Coding Interview - 6th Edition
 
-### Information
+## Information
 
 - this repository consists of my answers/solutions in JavaScript to the Interview Questions
 - includes comments & tests
 - it's my take on the answers, the solutions may not be the best possible answers!
 - notes on time & space complexity
 
-## Interview Questions:
+## Interview Questions
 
 ### <kbd>Data Structures</kbd>
 
