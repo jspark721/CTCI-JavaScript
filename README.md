@@ -25,6 +25,11 @@
 
 #### Chapter 2 | Linked Lists
 
+- [x] 2.1 Remove Duplicates
+- [x] 2.2 Return Kth to Last Element
+- [x] 2.3 Delete Middle Node
+- [x] 2.4 Partition a Linked List
+
 #### Chapter 3 | Stacks and Queues
 
 #### Chapter 4 | Trees and Graphs
