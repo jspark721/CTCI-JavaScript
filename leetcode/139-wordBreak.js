@@ -30,6 +30,35 @@ s = 'car'
 ... etc, and when the s becomes empty, we return true;
 */
 
+const wordBreak2 = (s, wordDict) => {
+  //initiate the start index to run the loop
+  let start = 0;
+
+  //call the recursive function
+  return wordBreakRecursive(s, wordDict, start);
+};
+
+const wordBreakRecursive = (s, wordDict, start) => {
+  //create a new set
+  let set = new Set(wordDict);
+  //check for the start and s.length
+  if (start == s.length) return true;
+
+  //run the loop from start + 1, because the last index of previous recusive plus 1 to move forward, example: leet which ends at index 3, so to run the loop -- it should start at index 4
+  for (let end = start + 1; end <= s.length; end++) {
+    //check for substring exist in wordDict and also check for recursive return true where we pass end index which is start of the recursive function
+    if (
+      set.has(s.substring(start, end)) &&
+      wordBreakRecursive(s, wordDict, end)
+    ) {
+      return true;
+    }
+  }
+  return false;
+};
+
+console.log(wordBreak2('fastracecar', ['astra', 'fast', 'race', 'car']));
+
 var wordBreak = function (s, wordDict) {
   if (s.length === 0 || wordDict.length === 0) return false;
 
