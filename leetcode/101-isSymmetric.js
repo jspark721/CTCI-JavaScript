@@ -17,7 +17,7 @@ For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
  * @return {boolean}
  */
 
- //recursion
+//recursion
 var isSymmetric = function (root) {
   if (!root) return true;
 
@@ -35,7 +35,7 @@ const checkSymmetry = (left, right) => {
   //check both subtrees but travel it in mirrored fashion, left subtree goes left to right, right subtree goes right to left and make sure they're both equal (symmetric)
   return (
     checkSymmetry(left.left, right.right) &&
-    checkSymmetry(left.right, right.left);
+    checkSymmetry(left.right, right.left)
   );
 };
 
@@ -43,22 +43,22 @@ const checkSymmetry = (left, right) => {
 
 const isSymmetric2 = (root) => {
   //if no root, it's symmetric
-  if(!root) return true;
+  if (!root) return true;
 
   //initialize two queues, one for left and one for right subtree
   let q1 = [root.left];
   let q2 = [root.right];
 
   //traverse through both branches until they are both exhausted at the same time
-  while(q1.length && q2.length) {
+  while (q1.length && q2.length) {
     //get current left and compare it to the right of each branch (mirror)
     let node1 = q1.shift();
     let node2 = q2.shift();
     //if both are null at the same time, just move on
-    if(!node1 && !node2) continue;
+    if (!node1 && !node2) continue;
 
     //if the current level is not symmetric (one is null or they're not equal) just return false
-    if(!node1 || !node2 || node1.val !== node2.val) return false;
+    if (!node1 || !node2 || node1.val !== node2.val) return false;
 
     //to maintain comparing left to right, you have to push left and right & reverse for each branch
     q1.push(node1.left);
@@ -69,4 +69,4 @@ const isSymmetric2 = (root) => {
 
   //if both are exhausted and we don't return false, then it's symmetric
   return true;
-}
+};
