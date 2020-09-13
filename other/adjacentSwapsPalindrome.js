@@ -92,11 +92,11 @@ const countSwap = (str) => {
   let arr = str.split('');
   //counter to count minimum swap
   let totalSwaps = 0;
-
+  let odd = 0;
   //a loop which run in half way
   for (let i = 0; i < Math.floor(n / 2); i++) {
     let left = i;
-    let right = n - left - 1;
+    let right = n - i - 1;
 
     //a loop which run from right pointer to left pointer
     while (left < right) {
@@ -111,12 +111,22 @@ const countSwap = (str) => {
 
     //if both pointers are at the same position, we don't have sufficient characters to make palindrome a string
     if (left == right) {
-      return -1;
+      odd++;
+      if (odd > 1) {
+        return -1;
+      }
+      while (left < Math.floor(n / 2)) {
+        let t = arr[left];
+        arr[left] = arr[left + 1];
+        arr[left + 1] = t;
+        totalSwaps++;
+        left++;
+      }
     } else {
-      for (let j = right; j < n - left - 1; j++) {
-        let t = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = t;
+      while (right < n - i - 1) {
+        let temp = arr[right];
+        arr[right] = arr[right + 1];
+        right++;
         totalSwaps++;
       }
     }
