@@ -35,14 +35,17 @@ const isPalindrome = (x) => {
 console.log(isPalindrome(12321));
 
 var isPalindrome2 = function (x) {
-  if (x < 0) return false;
+  //if x is less than 0, x is not a palindrome, also, if the last digit of the number os 0, the first digit of the number also has to be 0, only 0 satisfy this property
+  if (x < 0 || (x % 10 === 0 && x !== 0)) return false;
 
-  let rev = 0;
+  let reversed = 0;
+  //Math.floor(i/10) removes the last digit of the integer and repeat until i is exhausted
   for (let i = x; i >= 1; i = Math.floor(i / 10)) {
-    console.log(`rev: ${rev} i: ${i}`);
-    rev = rev * 10 + (i % 10);
+    console.log(`rev: ${reversed} i: ${i}`);
+    //make the last digit of the integer the first
+    reversed = reversed * 10 + (i % 10);
   }
-  return rev === x;
+  return reversed === x;
 };
 
 console.log(isPalindrome2(12321));
