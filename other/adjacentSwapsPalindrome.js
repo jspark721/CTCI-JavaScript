@@ -89,7 +89,7 @@ const countSwap = (str) => {
 
   let n = str.length;
   //convert string to an array so we can swap since strings are immutable
-  let arr = str.split('');
+  let arr = str.split("");
   //counter to count minimum swap
   let totalSwaps = 0;
   let odd = 0;
@@ -97,6 +97,9 @@ const countSwap = (str) => {
   for (let i = 0; i < Math.floor(n / 2); i++) {
     let left = i;
     let right = n - i - 1;
+    console.log(
+      `i: ${i} - ${arr}, left: ${left} - ${arr[left]}, right: ${right} - ${arr[right]}, totalSwaps: ${totalSwaps}`
+    );
 
     //a loop which run from right pointer to left pointer
     while (left < right) {
@@ -126,6 +129,7 @@ const countSwap = (str) => {
       while (right < n - i - 1) {
         let temp = arr[right];
         arr[right] = arr[right + 1];
+        arr[right + 1] = temp;
         right++;
         totalSwaps++;
       }
@@ -134,7 +138,4 @@ const countSwap = (str) => {
   return totalSwaps;
 };
 
-console.log(countSwap('mamad')); //3
-console.log(countSwap('asdfjkl')); //-1
-console.log(countSwap('aabb')); //2
-console.log(countSwap('ntiin')); //1 -- doesn't work? why?
+console.log(countSwap("mamad")); //3
