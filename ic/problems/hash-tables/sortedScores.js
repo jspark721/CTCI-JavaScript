@@ -55,12 +55,12 @@ const sortScores = (scores, highscore) => {
     let result = [];
     while (leftArray.length && rightArray.length) {
       if (leftArray[0] > rightArray[0]) {
-        result.push(left.shift());
+        result.push(leftArray.shift());
       } else {
-        result.push(right.shift());
+        result.push(rightArray.shift());
       }
     }
-    return result.concat(left, right);
+    return result.concat(leftArray, rightArray);
   }
   return merge(left, right);
 };
