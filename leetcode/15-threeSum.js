@@ -3,10 +3,25 @@ Given an array nums of n integers, are there elements a, b, c in nums such that 
 
 I: array
 O: array
-C: no duplicate triplets
-E: empty array
+C: optimize
+E: empty array, no duplicates
 
+example = [-3, -1, 1, 0, 2, 10, -2, 8]
+output = [
+  [-3, 1, 2],
+  [-2, 0, 2],
+  [-1, 0, 1]
+]
+
+input=[1,2,3,4]
+output=[]
+no triplets found
 */
+
+const threeSums = (array) => {
+  let result = [];
+  if (array.length < 0) return result;
+};
 
 /**
  * @param {number[]} nums
