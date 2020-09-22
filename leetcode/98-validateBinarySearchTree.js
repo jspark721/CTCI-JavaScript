@@ -15,27 +15,30 @@
 var isValidBST = function (root) {
   if (!root) return true;
 
-  //initialize a min and max vaue to null
-  let min = null;
-  let max = null;
+  //initialize a min and max values to -infinity & infinity
+  let min = -Infinity;
+  let max = Infinity;
+
+  let isValid = (root, min, max) => {
+    //if root is empty, return true;
+    if (!root) return true;
+
+    //check if the root is less than min or the root is greater than max, then it's not valid and we need to return false
+    //we need to also check if min or max value is NOT null
+    if (
+      (min !== null && root.val <= min) ||
+      (max !== null && root.val >= max)
+    ) {
+      return false;
+    }
+    //now we call the recursive function and change the root, min and max
+    return (
+      isValid(root.left, min, root.val) && isValid(root.right, root.val, max)
+    );
+  };
 
   //call the validate recursion function
   return isValid(root, min, max);
-};
-
-let isValid = (root, min, max) => {
-  //if root is empty, return true;
-  if (!root) return true;
-
-  //check if the root is less than min or the root is greater than max, then it's not valid and we need to return false
-  //we need to also check if min or max value is NOT null
-  if ((min !== null && root.val <= min) || (max !== null && root.val >= max)) {
-    return false;
-  }
-  //now we call the recursive function and change the root, min and max
-  return (
-    isValid(root.left, min, root.val) && isValid(root.right, root.val, max)
-  );
 };
 
 console.log(isValidBST([2, 1, 3])); //return true
@@ -68,3 +71,6 @@ const isValidBST2 = (root) => {
   }
   return true;
 };
+
+//time complexity: O(n) -- we visit each node once
+//space complexity: O(n) -- just using a call stack using recursion
