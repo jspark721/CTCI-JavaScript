@@ -29,8 +29,19 @@
 - [x] 2.2 Return Kth to Last Element
 - [x] 2.3 Delete Middle Node
 - [x] 2.4 Partition a Linked List
+- [ ] 2.5 Sum Lists
+- [ ] 2.6 Palindrome
+- [ ] 2.7 Intersection
+- [ ] 2.8 Loop Detection
 
 #### Chapter 3 | Stacks and Queues
+
+- [ ] 3.1 Three in One
+- [ ] 3.2 Stack Min
+- [ ] 3.3 Stack of Plates
+- [ ] 3.4 Queue via Stacks
+- [ ] 3.5 Sort Stack
+- [ ] 3.6 Animal Shelter
 
 #### Chapter 4 | Trees and Graphs
 
