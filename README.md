@@ -39,7 +39,7 @@
 - [] 4.3 List of Depths
 - [x] 4.4 Check Balanced
 - [x] 4.5 Validate BST
-- [] 4.5 Successor
+- [x] 4.5 Successor
 - [] 4.7 Build Order
 - [] 4.8 First Common Ancestor
 - [] 4.9 BST Sequences
