@@ -61,3 +61,47 @@ const board2 = [
 ];
 
 console.log(wordSearch(board2, 'ABCESEEEFS'));
+
+const exist = (board, word) => {
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][j] == word[0] && dfs(board, i, j, 0, word)) {
+        return true;
+      }
+    }
+  }
+  return false;
+
+  function dfs(board, row, col, count, word) {
+    if (count == word.length) {
+      //means we traversed through the whole board and the word was found
+      return true;
+    }
+    //checking the boundaries
+    if (
+      row < 0 ||
+      row >= board.length ||
+      col < 0 ||
+      col >= board[row].length ||
+      board[row][col] !== word[count]
+    ) {
+      return false;
+    }
+
+    //continue the recursion
+    let temp = board[row][col];
+    console.log(temp);
+    board[row][col] = ' ';
+    let found =
+      dfs(board, row + 1, col, count + 1, word) ||
+      dfs(board, row - 1, col, count + 1, word) ||
+      dfs(board, row, col + 1, count + 1, word) ||
+      dfs(board, row, col - 1, count + 1, word);
+
+    board[row][col] = temp;
+
+    return found;
+  }
+};
+
+console.log(exist(board, 'SEE')); //true
