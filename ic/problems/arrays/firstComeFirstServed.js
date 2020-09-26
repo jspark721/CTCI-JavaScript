@@ -46,6 +46,57 @@ console.log(firstComeFirstServed([2, 10, 4], [21, 3, 5], [21, 2, 4, 3, 10, 5]));
 //time complexity: O(n^2) because we are slicing the array each time and moving the array
 //space complexity: O(n) -- taking space in the call stack because of recursion
 
+//we can avoid the slicing of the array by keeping track of the index
+const restuarantOrders = (
+  takeout,
+  dinein,
+  served,
+  servedIndex,
+  dineIndex,
+  takeoutIndex
+) => {
+  servedIndex = servedIndex !== null ? servedIndex : 0;
+  dineIndex = dineIndex !== null ? dineIndex : 0;
+  takeoutIndex = takeoutIndex !== null ? takeoutIndex : 0;
+
+  //base case -- we reached the end of the order and it was all in order
+  if (servedIndex === served.length) return true;
+
+  if (
+    takeoutIndex < takeout.length &&
+    takeout[takeoutIndex] === served[servedIndex]
+  ) {
+    takeoutIndex++;
+  } else if (
+    dineIndex < dinein.length &&
+    dinein[dineIndex] === served[servedIndex]
+  ) {
+    dineIndex++;
+  } else {
+    return false;
+  }
+  servedIndex++;
+  return restuarantOrders(
+    takeout,
+    dinein,
+    served,
+    servedIndex,
+    dineIndex,
+    takeoutIndex
+  );
+};
+
+console.log(
+  restuarantOrders(
+    takeout,
+    dinein,
+    served,
+    (servedIndex = null),
+    (dineIndex = null),
+    (takeoutIndex = null)
+  )
+);
+
 /* iterative solution by keeping pointer at the current index to the end of the array for each array
  */
 
