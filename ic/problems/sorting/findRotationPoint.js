@@ -42,10 +42,11 @@ const rotationPointBinary = (words) => {
     if (words[mid] >= words[0]) {
       //go right
       left = mid;
-    } else {
+    } else if (words[mid] <= words[0]) {
       //go left
       right = mid;
     }
+    console.log(`left ${left} right ${right}`);
     if (left === mid) break;
   }
   return right;
@@ -66,3 +67,7 @@ const words = [
 
 console.log(rotationPointBinary(words));
 console.log(rotationPointBinary([100, 200, 1, 2, 3, 5]));
+console.log(rotationPointBinary([1, 2, 3]));
+
+//time complexity: O(log n)
+//space complexity: O(1)
