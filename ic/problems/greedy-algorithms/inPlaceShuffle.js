@@ -44,9 +44,6 @@ const shuffle = (array) => {
 
     //place our random choice in the spot by swapping
     if (i !== randomChoiceIndex) {
-      console.log(
-        `randomChoiceIndex: ${randomChoiceIndex}, array[i]: ${array[i]}`
-      );
       let chosenIndex = array[i];
       array[i] = array[randomChoiceIndex];
       array[randomChoiceIndex] = chosenIndex;
@@ -56,3 +53,7 @@ const shuffle = (array) => {
 };
 
 console.log(shuffle([1, 2, 3, 4, 5]));
+
+//this is known as the Fisher-Yates shuffle or Knuth shuffle
+//time complexity: O(n)
+//space complexity: O(1)
