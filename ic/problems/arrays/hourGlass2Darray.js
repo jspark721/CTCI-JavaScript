@@ -55,3 +55,37 @@ const array2D = [
 ];
 
 console.log(hourglassSum(array2D));
+
+//time complexity: O(N*M) but we are also iterating through the results array again
+//space complexity: O(N) creating a new results array
+
+//to avoid using extra space, we can avoid creating a results array and just only store the maxSum only if it's greater than the current sum
+
+const hourglassSumSaveSpace = (arr) => {
+  if (arr.length === 0) return;
+
+  let sum;
+  let maxSum = -Infinity;
+  for (let i = 0; i < arr.length - 2; i++) {
+    for (let j = 0; j < arr[0].length - 2; j++) {
+      sum =
+        //top of hourglass
+        arr[i][j] +
+        arr[i][j + 1] +
+        arr[i][j + 2] +
+        //middle of hourglass
+        arr[i + 1][j + 1] +
+        //bottom of hourglass
+        arr[i + 2][j] +
+        arr[i + 2][j + 1] +
+        arr[i + 2][j + 2];
+
+      if (sum > maxSum) {
+        maxSum = sum;
+      }
+    }
+  }
+
+  return maxSum;
+};
+console.log(hourglassSumSaveSpace(array2D));
