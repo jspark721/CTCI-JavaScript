@@ -1,0 +1,59 @@
+<!-- Enter your HTML code here -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sample Title</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+  </head>
+  <style>
+    canvas {
+      border: 1px solid #f0f;
+    }
+    /** 
+// This question should be solved using React.
+//     If you do not have react experience please use plan JavaScript (Babel transpiled, so ES6 is safe to use!). 
+//      Typescript is also acceptable too, but not required!)
+// 
+// Instructions:
+//      Make a small canvas (200px x 200px) component that can display the position of two mouse clicks.
+//      Draw a dot or circle at the position where each mouse click occurs. 
+//     Then create a text output component to display the distance between the two points.
+//
+// Clicking a third point should reset the two points, and be the first point again.
+//  Keep the dot/circle visible until the component resets on the third click.
+// Distance Formula:
+// d = sqrt{(x_2 - x_1)^2 + (y_2-y_1)^2}
+//        d    =     distance
+//        (x_1, y_1)    =     coordinates of the first point
+//         (x_2, y_2)    =     coordinates of the second point
+//
+// Googling / viewing documentation is allowed. Here are some quick links:
+// https://developer.mozilla.org/en-US/docs/Glossary/Canvas
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext
+*/
+  </style>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    // Mimic "require" / "import" by destructuring from React instead:
+    const { useState, useRef } = React;
+
+    const App = (props) => {
+      const [canvasEl, setCanvasEl] = useRef();
+
+      return <canvas width="200" height="200" ref={setCanvasEl} />;
+    };
+
+    //////// Render call, no need to edit below here. ////////
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</html>
