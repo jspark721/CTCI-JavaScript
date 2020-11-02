@@ -17,7 +17,6 @@ const permute = (string) => {
   let list = [];
 
   const helper = (string, list, sublist) => {
-    console.log(`${list}, ${sublist}`);
     if (sublist.length === string.length) {
       list.push(sublist.slice());
     } else {
@@ -34,4 +33,23 @@ const permute = (string) => {
   return list;
 };
 
-console.log(permute('ABC'));
+const permutation = (str) => {
+  let result = [];
+
+  const findPermutations = function (visited = new Set(), currentPerm = []) {
+    if (currentPerm.length === str.length) {
+      result.push(currentPerm);
+      return;
+    }
+    for (let i = 0; i < str.length; i++) {
+      if (!visited.has(i)) {
+        findPermutations(new Set([...visited, i]), [...currentPerm, str[i]]);
+      }
+    }
+  };
+  findPermutations();
+
+  return result;
+};
+
+console.log(permutation('car'));
