@@ -52,4 +52,27 @@ const permutation = (str) => {
   return result;
 };
 
-console.log(permutation('car'));
+function findPerms(str) {
+  console.log("\n==== FINDING PERMUTATIONS FOR ", str, "====");
+
+  // BASE CASE
+  if (str.length === 1) return [str];
+
+  // RECURSIVE CASE
+  let all = [];
+
+  for (let i = 0; i < str.length; i++) {
+    const currentLetter = str[i];
+
+    const remainingLetters = str.slice(0, i) + str.slice(i + 1);
+
+    const permsOfRemainingLetters = findPerms(remainingLetters);
+
+    permsOfRemainingLetters.forEach((subPerm) => {
+      all.push(currentLetter + subPerm);
+      console.log(`--------****subperm ${subPerm}****--------- all: ${all}`);
+    });
+  }
+  return all;
+}
+console.log(findPerms("TWO"));
